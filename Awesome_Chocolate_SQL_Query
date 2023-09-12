@@ -1,0 +1,144 @@
+-- select everything from sales table
+
+SELECT * 
+FROM sales;
+
+-- show just a few columns from sales table
+
+SELECT Customers, Amount, SaleDate
+FROM sales;
+
+-- Adding a calculated coulumn with SQL
+ 
+SELECT SaleDate, Amount, Boxes, Amount/Boxes
+FROM sales;
+
+-- Naming a field with AS in SQL
+
+SELECT SaleDate, Amount, Boxes, Amount/Boxes AS "Amount per Boxes"
+FROM sales;
+
+-- Using where clause in SQL
+
+SELECT * 
+FROM sales
+WHERE Amount > 10000;
+
+-- Showing Sales data where amount is greater than 10000 by decending order 
+
+SELECT * 
+FROM sales
+WHERE Amount > 10000
+ORDER BY Amount DESC;
+
+-- Showing sales data where geography is g1 by product Id & descending order of Amount
+
+SELECT * 
+FROM sales
+WHERE GeoID = "g1"
+ORDER BY PID, Amount DESC;
+
+-- Working with dates in SQL
+
+SELECT *
+FROM sales
+WHERE Amount > 10000 AND SaleDate >= '2022-01-01';
+
+-- Using year() function to select all data in a specific year
+
+SELECT SaleDate, Amount
+FROM sales
+WHERE Amount > 10000 AND YEAR(SaleDate) = 2022
+ORDER BY Amount DESC;
+
+-- between condition in sql with < & > operators
+
+SELECT * 
+FROM sales
+WHERE Boxes > 0 AND Boxes <= 50;
+
+-- using the between operator in sql
+
+SELECT *
+FROM sales
+WHERE Boxes BETWEEN 0 AND 50;
+
+-- Using weekday() function in sql
+
+SELECT SaleDate, Amount, Boxes, WEEKDAY(SaleDate) AS Day_of_week
+FROM sales
+WHERE WEEKDAY(SaleDate) = 4;
+
+-- Select everything from people table
+
+SELECT * 
+FROM people;
+
+-- Join people table with sales table 
+
+SELECT *
+FROM sales s 
+JOIN people p 
+ON s.SPID = p.SPID;
+
+-- Describe all tables
+
+SELECT * 
+FROM geo;
+
+SELECT *
+FROM people;
+
+SELECT * 
+FROM products;
+
+SELECT * 
+FROM sales;
+
+-- working with people table
+
+SELECT * 
+FROM people;
+
+-- or operator in SQL
+
+SELECT * 
+FROM people
+WHERE Team = 'Delish' OR Team = 'Jucies';
+
+-- in operator in SQL
+
+SELECT *
+FROM people
+WHERE Team IN ('Delish', 'Jucies');
+
+-- like operator in SQL
+
+SELECT *
+FROM people
+WHERE Salesperson LIKE 'b%';
+
+SELECT * 
+FROM people
+WHERE Salesperson LIKE '%b%';
+
+-- Using Case to branching logic in sql
+
+SELECT SaleDate, Amount,
+	CASE
+		WHEN Amount < 1000 THEN 'Under 1k'
+        WHEN Amount < 5000 THEN 'Under 5k'
+        WHEN Amount < 10000 THEN 'Under 10K'
+      ELSE '10k or more'
+	END AS 'Amount Category'
+FROM sales;
+    
+ -- Group by in SQL
+
+SELECT Team, COUNT(*) 
+FROM people
+GROUP BY Team;
+ 
+SELECT * 
+FROM people
+WHERE Team = '';
