@@ -1,1 +1,1 @@
---> This Project included Awesome Chocolate detailed analysis in MySQL.
+--> This Project holds all Awesome Chocolate detailed sales analysis in MySQL.
