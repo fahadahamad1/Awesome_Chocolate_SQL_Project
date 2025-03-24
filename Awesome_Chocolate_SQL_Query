@@ -132,7 +132,7 @@ SELECT SaleDate, Amount,
       ELSE '10k or more'
 	END AS 'Amount Category'
 FROM sales;
-    
+
  -- Group by in SQL
 
 SELECT Team, COUNT(*) 
